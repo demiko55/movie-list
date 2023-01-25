@@ -9,5 +9,9 @@ router.post('/movie', controller.movies.post);
 // router.get('/users', controller.users.get);
 // router.post('/users', controller.users.post);
 
+router.get('/', (req, res)=>{
+  res.send('movie list homepage');
+})
+
 
 module.exports = router;

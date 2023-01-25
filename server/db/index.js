@@ -8,3 +8,4 @@ const connection = mysql.createConnection({
 })
 
 exports.connection = connection;
+//we can also use module.exports = connection here, then do var db = require('../db'); can simply use db.query(), no need to use db.connection.query();

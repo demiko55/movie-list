@@ -22,6 +22,8 @@ const App = (props) => {
   const [searchValue,setSearchValue] = useState('');
   const [newMovieTitle, setNewMovieTitle] = useState('');
 
+  const [watch, setWatch] = useState('To watch');
+
   //var axios = require('axios');
   const API_URL = 'http://localhost:3000/api';//when run the client, you must visit localhost, can't be 127.0.0.1, or will be blocked by CROS
   //axios.get must be wrapped by a funtion, then useEffect to invoke that function, or it will repeatly called(don't know why)
@@ -37,7 +39,7 @@ const App = (props) => {
     });
   }
 
-  useEffect(()=> getServerData(),[]);
+  useEffect(()=> getServerData(),[]);//make sure axios.get only execute once.
 
 
   var handleWatchedMovies = ()=>{
@@ -89,6 +91,7 @@ const App = (props) => {
     .then((data)=>{
       setDisplay(temp);
       setMovies(movies.concat(temp));
+      //or can we just call the getServerData() here?
       console.log('data after post from server', data);
     })
     .catch((err)=>{
